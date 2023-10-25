@@ -34,7 +34,7 @@
                 document.getElementById("3").value = kB*temp/electronVolt;
             }
             function reset() {
-                document.getElementById("1").value = 632.8;
+                document.getElementById("1").value = 100;
                 updateValuesFromNM();
             }
         </script>
@@ -44,13 +44,13 @@
         Unit conversion
     </h1>
     <div>nm</div>
-    <div><textarea id="1" style="height: 1.3em;resize:none;" onchange="updateValuesFromNM()">632.8</textarea></div>
+    <div><input id="1" style="width:12em; height:1.3em;resize:none;" oninput="updateValuesFromNM()" value='100'></div>
     <div>cm<sup>-1</sup></div>
-    <div><textarea id="2" style="height: 1.3em;resize:none;" onchange="updateValuesFromCM()"></textarea></div>
+    <div><input id="2" style="width:12em; height: 1.3em;resize:none;" oninput="updateValuesFromCM()"></div>
     <div>eV</div>
-    <div><textarea id="3" style="height: 1.3em;resize:none;" onchange="updateValuesFromEV()"></textarea></div>
+    <div><input id="3" style="width:12em; height: 1.3em;resize:none;" oninput="updateValuesFromEV()"></div>
     <div>K</div>
-    <div><textarea id="4" style="height: 1.3em;resize:none;" onchange="updateValuesFromT()"></textarea></div>
+    <div><input id="4" style="width:12em; height: 1.3em;resize:none;" oninput="updateValuesFromT()"></div>
     <script> updateValuesFromNM(); </script>
     
     <br>
