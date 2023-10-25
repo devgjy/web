@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var c = 299792458; // m per sec
+        var h = 6.62607015e-34; // joule sec
+        var kB = 1.380649e-23; // joule per kelvin
+        var electronVolt = 1.602176634e-19; // joule
+
+            function updateValuesFromNM(){
+                var nm = parseFloat(document.getElementById("1").value)
+                document.getElementById("2").value = 10e6/nm;
+                document.getElementById("3").value = h*c/(nm*1e-9)/electronVolt;
+                document.getElementById("4").value = h*c/(nm*1e-9)/kB;
+            }
+            function updateValuesFromCM(){
+                var cm = parseFloat(document.getElementById("2").value)
+                document.getElementById("1").value = 10e6/cm;
+                document.getElementById("3").value = h*c/(10e6/cm*1e-9)/electronVolt;
+                document.getElementById("4").value = h*c/(10e6/cm*1e-9)/kB;
+            }
+            function updateValuesFromEV(){
+                var eV = parseFloat(document.getElementById("3").value)
+                document.getElementById("1").value = h*c/(eV*electronVolt)*1e9;
+                document.getElementById("2").value = 10e6/(h*c/(eV*electronVolt)*1e9);
+                document.getElementById("4").value = eV*electronVolt/kB;
+            }
+            function updateValuesFromT(){
+                var temp = parseFloat(document.getElementById("4").value);
+                document.getElementById("1").value = h*c/(kB*temp)*1e9;
+                document.getElementById("2").value = 10e6/(h*c/kB*temp*1e9);
+                document.getElementById("3").value = kB*temp/electronVolt;
+            }
+            function reset() {
+                document.getElementById("1").value = 632.8;
+                updateValuesFromNM();
+            }
+        </script>
+</head>
+<body style="text-align:center">
+    <h1 style="color: rgb(2, 42, 116);">
+        Unit conversion
+    </h1>
+    <div>nm</div>
+    <div><textarea id="1" style="height: 1.3em;resize:none;" onchange="updateValuesFromNM()">632.8</textarea></div>
+    <div>cm<sup>-1</sup></div>
+    <div><textarea id="2" style="height: 1.3em;resize:none;" onchange="updateValuesFromCM()"></textarea></div>
+    <div>eV</div>
+    <div><textarea id="3" style="height: 1.3em;resize:none;" onchange="updateValuesFromEV()"></textarea></div>
+    <div>K</div>
+    <div><textarea id="4" style="height: 1.3em;resize:none;" onchange="updateValuesFromT()"></textarea></div>
+    <script> updateValuesFromNM(); </script>
+    
+    <br>
+    <button onclick="reset()">
+      Reset
+    </button>
+
+</body>
+</html>
